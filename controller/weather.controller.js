@@ -10,12 +10,19 @@ exports.weatherByCity = async (req, res) => {
 		const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${weatherApiKey}`;
 
 		const response = await axios.get(url);
-
-		res.status(200).json({
-			country : response.data.sys.country,
-			name : response.data.name,
-			temp : response.data.main.temp,
-		});
+		
+		if(response.data.cod === "404") {
+			res.status(404).json({
+				status: 404,
+				message : "weather data not found"
+			});
+		} else {
+			res.status(200).json({
+				country : response.data.sys.country,
+				name : response.data.name,
+				temp : response.data.main.temp,
+			});
+		}
 	} catch (error) {
 		console.log(error);
 
@@ -50,15 +57,22 @@ exports.weatherByLatitudeLongitudeOrPincode = async (req, res) => {
 		}
 
 		const response = await axios.get(url);
-		res.status(200).json({
-			country : response.data.sys.country,
-			name : response.data.name,
-			temp : response.data.main.temp,
-			min_temp : response.data.main.temp_min,
-			max_temp : response.data.main.temp_max,
-			latitude : response.data.coord.lat,
-			longitude : response.data.coord.lon,
-		});
+		if(response.data.cod === "404") {
+			res.status(404).json({
+				status : 404,
+				message : "weather data not found"
+			});
+		} else {
+			res.status(200).json({
+				country : response.data.sys.country,
+				name : response.data.name,
+				temp : response.data.main.temp,
+				min_temp : response.data.main.temp_min,
+				max_temp : response.data.main.temp_max,
+				latitude : response.data.coord.lat,
+				longitude : response.data.coord.lon,
+			});
+		}
 	} catch (error) {
 		console.log(error);
 		res.status(404).json({
