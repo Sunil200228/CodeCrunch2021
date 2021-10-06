@@ -1,0 +1,19 @@
+{
+  "name": "codecrunch",
+  "version": "1.0.0",
+  "description": "CodeCrunch consist of amazing challenges with infinte learning.",
+  "main": "app.js",
+  "scripts": {
+    "test": "nodemon app"
+  },
+  "keywords": [
+    "CodeCrunch"
+  ],
+  "author": "Sunil Panda",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.22.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1"
+  }
+}
