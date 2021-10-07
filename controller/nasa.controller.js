@@ -77,7 +77,7 @@ exports.videosOfTheGivenMonth = async (req, res) => {
 
 		const monthNumber = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"].indexOf(month.toLowerCase());
 		const startDate = new Date(year, monthNumber, 1).toISOString().slice(0, 10);
-		let endDate = new Date(year, monthNumber + 1 , 0).toISOString().slice(0, 10);
+		let endDate = new Date(year, monthNumber , -1).toISOString().slice(0, 10);
 
 		if(endDate > new Date().toISOString().slice(0, 10)) {
 			endDate = new Date().toISOString().slice(0, 10);
