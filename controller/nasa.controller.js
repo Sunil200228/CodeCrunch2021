@@ -85,6 +85,8 @@ exports.videosOfTheGivenMonth = async (req, res) => {
 
 		const response = await axios.get(`https://api.nasa.gov/planetary/apod?api_key=${nasaApiKey}&start_date=${startDate}&end_date=${endDate}`);
 
+		console.log(response);
+		console.log(startDate, endDate);
 		const videos = response.data.filter(video => video.media_type === "video").map(video => video.url);
 		if(videos.length === 0) {
 			res.status(404).json({
@@ -126,7 +128,7 @@ exports.earthPolychromaticImage = async (req, res) => {
 					caption : image.caption,
 					image : image.image,
 					date : image.date,
-					lattitude : image.centroid_coordinates.lat,
+					latitude : image.centroid_coordinates.lat,
 					longitude : image.centroid_coordinates.lon,
 				}
 			});
