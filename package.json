@@ -6,11 +6,19 @@
   "scripts": {
     "test": "nodemon app"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CCI-CodeCrunch/team-010.git"
+  },
   "keywords": [
     "CodeCrunch"
   ],
   "author": "Sunil Panda",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CCI-CodeCrunch/team-010/issues"
+  },
+  "homepage": "https://github.com/CCI-CodeCrunch/team-010/#readme",
   "dependencies": {
     "axios": "^0.22.0",
     "dotenv": "^10.0.0",
