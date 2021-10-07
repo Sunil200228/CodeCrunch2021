@@ -4,6 +4,7 @@
   "description": "CodeCrunch consist of amazing challenges with infinte learning.",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "nodemon app"
   },
   "repository": {
