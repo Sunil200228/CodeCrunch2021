@@ -10,6 +10,12 @@ app.use("/weather", weather);
 app.use("/nasa", nasa);
 app.use("/crypto", crypto);
 
+app.get("/", (req, res) => {
+	res.status(200).json({
+		message: "Welcome to CodeX"
+	});
+});
+
 app.listen(port, () => {
 	console.log(`Server is running on port ${port}`);
 });
