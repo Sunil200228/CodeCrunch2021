@@ -9,7 +9,7 @@ exports.imageOfTheMonth = async (req, res) => {
 
 		const response = await axios.get(`https://api.nasa.gov/planetary/apod?api_key=${nasaApiKey}&date=${year}-${month}-01`);
 		if(response.data.length === 0) {
-			res.status(404).send({
+			res.status(404).json({
 				status: 404,
 				message: "image/video not found"
 			});
