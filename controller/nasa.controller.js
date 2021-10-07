@@ -39,8 +39,8 @@ exports.imagesOfTheGivenMonth = async (req, res) => {
 		const year = await validateYear.validateAsync(req.params.year);
 
 		const monthNumber = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"].indexOf(month.toLowerCase());
-		const startDate = new Date(year, monthNumber, 2).toISOString().slice(0, 10);
-		let endDate = new Date(year, monthNumber + 1, 1).toISOString().slice(0, 10);
+		const startDate = new Date(year, monthNumber, 1).toISOString().slice(0, 10);
+		let endDate = new Date(year, (monthNumber+1) , 0).toISOString().slice(0, 10);
 
 		if(endDate > new Date().toISOString().slice(0, 10)) {
 			endDate = new Date().toISOString().slice(0, 10);
@@ -85,8 +85,6 @@ exports.videosOfTheGivenMonth = async (req, res) => {
 
 		const response = await axios.get(`https://api.nasa.gov/planetary/apod?api_key=${nasaApiKey}&start_date=${startDate}&end_date=${endDate}`);
 
-		console.log(response);
-		console.log(startDate, endDate);
 		const videos = response.data.filter(video => video.media_type === "video").map(video => video.url);
 		if(videos.length === 0) {
 			res.status(404).json({
