@@ -7,7 +7,7 @@ exports.weatherByCity = async (req, res) => {
 
 	try {
 		const city = await validateCity.validateAsync(req.params.city_name);
-		const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${weatherApiKey}`;
+		const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${weatherApiKey}`;
 
 		const response = await axios.get(url);
 		
@@ -46,9 +46,9 @@ exports.weatherByLatitudeLongitudeOrPincode = async (req, res) => {
 		const pincode = await validatePincode.validateAsync(req.query.pin_code);
 
 		if(longitude !== undefined && latitude !== undefined) {
-			url = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${weatherApiKey}`;
+			url = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${weatherApiKey}`;
 		} else if(pincode !== undefined) {
-			url = `http://api.openweathermap.org/data/2.5/weather?zip=${pincode},IN&appid=${weatherApiKey}`;
+			url = `http://api.openweathermap.org/data/2.5/weather?zip=${pincode},IN&units=metric&appid=${weatherApiKey}`;
 		} else {
 			res.status(404).json({
 				status : 404,
