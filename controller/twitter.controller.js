@@ -91,7 +91,7 @@ exports.tweetsByHashtag = async (req, res) => {
 exports.tweetsByLocation = async (req, res) => {
 	const validateLatitude = Joi.number().required();
 	const validateLongitude = Joi.number().required();
-	const validateRadius = Joi.string().regex(/^[0-9A-Za-z]*$/).required();
+	const validateRadius = Joi.string().regex(/^[0-9A-Za-z.]*$/).required();
 
 	try {
 		const latitude = await validateLatitude.validateAsync(req.query.latitude);
