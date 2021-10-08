@@ -4,6 +4,7 @@ const weather = require('./routes/weather');
 const nasa = require('./routes/nasa');
 const crypto = require('./routes/crypto');
 const twitter = require('./routes/twitter');
+const github = require('./routes/github');
 const app = express();
 
 app.use(express.json());
@@ -11,6 +12,7 @@ app.use("/weather", weather);
 app.use("/nasa", nasa);
 app.use("/crypto", crypto);
 app.use("/twitter", twitter);
+app.use("/github", github);
 
 app.get("/", (req, res) => {
 	res.status(200).json({
